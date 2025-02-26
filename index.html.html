@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <script>
+        function checkAnswers(event) {
+            event.preventDefault(); // Форма жіберілмесін
+
+            let correctAnswers = 0;
+
+            // Бірінші сұрақтың дұрыс жауабын тексеру
+            let answer1 = document.querySelector('input[name="group1"]:checked');
+            if (answer1 && answer1.value === "check2") { // Дұрыс жауап - 2-вариант
+                correctAnswers++;
+            }
+
+            // Екінші сұрақтың дұрыс жауабын тексеру
+            let answer2 = document.querySelector('input[name="group2"]:checked');
+            if (answer2 && answer2.value === "check3") { // Дұрыс жауап - 3-вариант
+                correctAnswers++;
+            }
+
+            // Нәтижені көрсету
+            document.getElementById("result").innerText = "Дұрыс жауаптар саны: " + correctAnswers;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="checkAnswers(event)">
+        <label>Аты-жөніңіз: <input type="text" name="fullname" required></label><br>
+        <label>Парольіңізді енгізіңіз: <input type="password" name="password" required></label><br>
+
+        <!-- Бірінші сұрақ -->
+        <p>1.А.Құнанебаев қашан дүниеге келген?</p>
+        <label><input type="radio" name="group1" value="check1"> 1945</label><br>
+        <label><input type="radio" name="group1" value="check2"> 1845</label><br>
+        <label><input type="radio" name="group1" value="check3"> 1824</label><br>
+
+        <!-- Екінші сұрақ -->
+        <p>2.ОҚПУ қай жылы ашылған?</p>
+        <label><input type="radio" name="group2" value="check1"> 2001</label><br>
+        <label><input type="radio" name="group2" value="check2"> 1925</label><br>
+        <label><input type="radio" name="group2" value="check3"> 1937</label><br>
+
+        <p><input type="submit" value="Жөнелту"></p>
+    </form>
+
+    <p id="result" style="font-weight: bold;"></p>
+</body>
+</html>
